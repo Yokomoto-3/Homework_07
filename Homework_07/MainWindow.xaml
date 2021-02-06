@@ -1,0 +1,94 @@
+﻿<Window x:Class="Homework_07.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Homework_07"
+        mc:Ignorable="d"
+        Title="Ежедневник" Height="450" Width="800" Closing="Window_Closing">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Calendar HorizontalAlignment="Left" 
+                  Width="285" 
+                  x:Name="Calendar_main" 
+                  Calendar.SelectedDatesChanged="Calendar_SelectedDatesChanged"/>
+        <DataGrid
+                  x:Name="List_daily" 
+                  Margin="285,0,0,0"
+                  AutoGenerateColumns="false"
+                  CanUserAddRows="false"
+                  >
+            <DataGrid.Columns >
+                <DataGridTextColumn Header="ID" Binding="{Binding id, Mode=TwoWay}" Width="auto"/>
+                <DataGridTextColumn Header="Дата" Binding="{Binding date, Mode=TwoWay}" Width="auto"/>
+                <DataGridTextColumn Header="Важность" Binding="{Binding importance, Mode=TwoWay}" Width="auto"/>
+                <DataGridTextColumn Header="Тэг" Binding="{Binding tag, Mode=TwoWay}" Width="auto"/>
+                <DataGridTextColumn Header="Заметка" Binding="{Binding content, Mode=TwoWay}" Width="1*"/>
+            </DataGrid.Columns>
+
+
+        </DataGrid>
+        <Button Content="Добавить заметку" 
+                HorizontalAlignment="Left" 
+                Margin="87,307,0,0" 
+                VerticalAlignment="Top" 
+                Width="105"
+                x:Name="Button_add"
+                Click="Button_add_Click"/>
+        <!--<Button Content="Редактировать" 
+                HorizontalAlignment="Left" 
+                Margin="87,380,0,0" 
+                VerticalAlignment="Top" 
+                Width="105"
+                x:Name="Button_edit"
+                Click="Button_edit_Click"
+                />-->
+
+        <TextBox HorizontalAlignment="Left" 
+                 x:Name="text"
+                 Height="55" Margin="55,180,0,0" 
+                 TextWrapping="Wrap" 
+                 Text="заметка..." 
+                 VerticalAlignment="Top" 
+                 Width="175"/>
+        <TextBox HorizontalAlignment="Left" 
+                 Height="27" 
+                 Margin="143,266,0,0" 
+                 TextWrapping="Wrap" 
+                 Text="Личное" 
+                 VerticalAlignment="Top" 
+                 Width="70"
+                 x:Name="tag"/>
+        <Label  Content="тэг:" 
+                HorizontalAlignment="Left" 
+                Margin="143,237,0,0" Height="26" VerticalAlignment="Top"/>
+        <Label  Content="важность:" 
+                HorizontalAlignment="Left" 
+                Margin="71,237,0,0" Height="26" VerticalAlignment="Top" Width="65"/>
+        <ComboBox HorizontalAlignment="Left" 
+                  Margin="73,266,0,0" 
+                  VerticalAlignment="Top" 
+                  Width="38" 
+                  Height="27" 
+                  RenderTransformOrigin="0.444,0.444"
+                  SelectedIndex="0">
+            <ComboBoxItem Content="1"/>
+            <ComboBoxItem Content="2"/>
+            <ComboBoxItem Content="3"/>
+            <ComboBoxItem Content="4"/>
+            <ComboBoxItem Content="5"/>
+        </ComboBox>
+        <Button Content="Удалить заметку" 
+                HorizontalAlignment="Left" 
+                Margin="87,350,0,0" 
+                VerticalAlignment="Top" Width="105"
+                x:Name="Button_delete"
+                Click="Button_delete_Click"/>
+
+    </Grid>
+</Window>
